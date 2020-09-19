@@ -1,0 +1,74 @@
+{
+  "garageItem01": {
+    "checkoutDate": "8/16/2020",
+    "garageItemName": "Hammer",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Claw-hammer.jpg",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory01",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  },
+  "garageItem02": {
+    "checkoutDate": "7/11/20",
+    "garageItemName": "Power Drill",
+    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81XvViMFnlL._AC_SY355_.jpg",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory01",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  },
+  "garageItem03": {
+    "checkoutDate": "7/04/20",
+    "garageItemName": "Lawn Mower",
+    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61CQYxnAwaL._AC_SL1500_.jpg",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory02",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  },
+  "garageItem04": {
+    "checkoutDate": "5/24/20",
+    "garageItemName": "String Trimmer",
+    "imageUrl": "https://trimmersandedgers.com/wp-content/uploads/weed-wacker.jpg",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory02",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  },
+  "garageItem05": {
+    "checkoutDate": "6/01/20",
+    "garageItemName": "Komado Grill",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1960/2909/products/16620-3_Lifestyle-Angle.jpg?v=1559920042",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory03",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  },
+  "garageItem06": {
+    "checkoutDate": "5/17/20",
+    "garageItemName": "Smoker",
+    "imageUrl": "https://www.meadowcreekbbqsupply.com/wp-content/uploads/2016/09/Meadow_Creek_TS120P_5-2.jpg",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory03",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  },
+  "garageItem07": {
+    "checkoutDate": "2/19/20",
+    "garageItemName": "Motor Cycle Helmet",
+    "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61Li2uYseyL._AC_SX425_.jpg",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory04",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  },
+  "garageItem08": {
+    "checkoutDate": "3/20/20",
+    "garageItemName": "Car Cover",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0196/5170/files/DSC04920_1024x1024.jpg?v=1531923085",
+    "isCheckedOut": true,
+    "garageOwnerId": "user1",
+    "categoryId":"garageCategory04",
+    "uid": "AIzaSyCjl3vIWBiCOHWmqA-67QVB58J9NeA2aTI"
+  }
+}

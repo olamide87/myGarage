@@ -13,7 +13,7 @@ class MyNavbar extends React.Component {
 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <p className="navbar-brand">Navbar</p>
+        <p className="navbar-brand">My Garage Wishlist</p>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
