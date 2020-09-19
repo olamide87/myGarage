@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 
 const garageItemsShape = PropTypes.shape({
-  boardId: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  garageItemId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  uid: PropTypes.string.isRequired,
+  isCheckedOut: PropTypes.string.isRequired,
+  garageOwnerId: PropTypes.string.isRequired,
+  checkoutDate: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
 });
 
 export default { garageItemsShape };

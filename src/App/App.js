@@ -8,7 +8,7 @@ import fbConnection from '../helpers/data/connection';
 import MyNavbar from '../components/MyNavbar';
 import Auth from '../components/Auth';
 
-import GarageContainer from "../components/GarageContainer";
+import GarageContainer from '../components/GarageContainer';
 
 import './App.scss';
 import SingleCategory from '../components/SingleGarageCategory';
@@ -18,6 +18,7 @@ fbConnection();
 class App extends React.Component {
   state = {
     authed: false,
+    singleGarageCategoryId: '',
   }
 
   componentDidMount() {
@@ -34,16 +35,16 @@ class App extends React.Component {
     this.removeListener();
   }
 
-  setSingleGarageCategory = (SingleCategoryId) => {
-    this.setState({ SingleCategory });
+  setSingleGarageCategory = (singleGarageCategoryId) => {
+    this.setState({ singleGarageCategoryId });
   }
 
   render() {
-    const { authed, SingleCategoryId } = this.state;
+    const { authed, singleGarageCategoryId } = this.state;
 
     const loadComponent = () => {
-      if (authed && SingleCategoryId.length === 0) {
-        return <GarageContainer setSingleGarageCategory={this.setState} />;
+      if (authed && singleGarageCategoryId.length === 0) {
+        return <GarageContainer setSingleGarageCategory={this.setSingleGarageCategory} />;
       }
 
       return '';

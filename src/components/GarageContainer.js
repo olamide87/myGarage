@@ -10,25 +10,24 @@ class GarageContainer extends React.Component {
   }
 
   state ={
-    GarageCategory: [],
+    GarageCategories: [],
   }
 
-  getGarageCategoryData = () => {
+  getGarageCategories = () => {
     garageCategoryData.getGarageCategoryByUid(authData.getUid())
-      .then((GarageCategory) => this.setState({ GarageCategory }))
-      .catch((err) => console.error('get GarageCategory broke', err));
+      .then((GarageCategories) => this.setState({ GarageCategories }))
+      .catch((err) => console.error('get GarageCategories broke', err));
   }
 
   componentDidMount() {
-    this.getGarageCategoryData();
+    this.getGarageCategories();
   }
 
   render() {
-    const { GarageCategory } = this.state;
+    const { GarageCategories } = this.state;
     const { setSingleGarageCategory } = this.props;
 
-    const garageCategoryCard = GarageCategory.map((GarageCategory) => <GarageCategory GarageCategory={GarageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id}
-    
+    const garageCategoryCard = GarageCategories.map((garageCategory) => <GarageCategory GarageCategory={GarageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id}/>);
     return (
       <div>
           <div className="card-columns">
