@@ -44,7 +44,6 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <h1>APP COMPONENT HERE!!!!</h1>
         <MyNavbar authed={authed} />
         {loadComponent()}
       </div>
