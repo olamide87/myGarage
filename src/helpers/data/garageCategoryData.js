@@ -18,8 +18,11 @@ const getGarageCategoryByCategoryId = (categoryId) => new Promise((resolve, reje
 
 const getSingleCategory = (categoryId) => axios.get(`${baseUrl}/garageCategories/${categoryId}.json`);
 
+const createCategory = (newCategory) => axios.post(`${baseUrl}/garageCategories.json`, newCategory);
+
 export default {
   getSingleCategory,
   getGarageCategoryByCategoryId,
   getGarageCategoryByUid,
+  createCategory,
 };
