@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import authData from '../../helpers/data/authData';
+import authData from '../helpers/data/authData';
 
 class GarageCategoryForm extends React.Component {
   static propTypes = {
@@ -9,8 +9,8 @@ class GarageCategoryForm extends React.Component {
   }
 
   state = {
-   categoryName: '',
-   imgUrl: '',
+    categoryName: '',
+    imgUrl: '',
   }
 
   changeNameEvent = (e) => {
@@ -30,16 +30,18 @@ class GarageCategoryForm extends React.Component {
 
   saveCategoryEvent = (e) => {
     e.preventDefault();
-    const { categoryName, imgUrl } =this.setState;
-    const { createdBoard } = this.props;
+    const { categoryName, imgUrl } = this.setState;
+    const { createCategory } = this.props;
 
-    const newCategory = { 
+    const newCategory = {
       categoryName,
       imgUrl,
       uid: authData.getUid(),
     };
 
+    console.warn('hey here is a new category!!!', newCategory);
     createCategory(newCategory);
+  }
 
     closeFormEvent = (e) => {
       e.preventDefault();
@@ -49,7 +51,7 @@ class GarageCategoryForm extends React.Component {
     render() {
       const {
         categoryName,
-        imgUrl
+        imgUrl,
       } = this.state;
 
       return (
@@ -74,12 +76,13 @@ class GarageCategoryForm extends React.Component {
             id="imgUrl"
             placeholder="picture"
             value={imgUrl}
-            onChange={this.changeDescriptionEvent}
+            onChange={this.changeImgUrlEvent}
           />
-          </div>  
+          </div>
+          <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
          </form>
-    );
-  }
+      );
+    }
 }
 
 export default GarageCategoryForm;
