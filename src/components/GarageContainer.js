@@ -8,11 +8,14 @@ import GarageCategoryForm from './GarageCategoryForm';
 class GarageContainer extends React.Component {
   static propTypes = {
     setSingleGarageCategory: PropTypes.func.isRequired,
+    editACategory: PropTypes.func.isRequired,
   }
 
   state ={
     garageCategories: [],
     formOpen: false,
+    editCategory: {},
+
   }
 
   getGarageCategories = () => {
@@ -34,11 +37,28 @@ class GarageContainer extends React.Component {
       .catch((err) => console.error('Create Category Broke', err));
   }
 
+  editACategory = (categoryToEdit) => {
+    this.setState({ formOpen: true, editCategory: categoryToEdit });
+  }
+
+  updateCategory = (categoryId, editedCategory) => {
+    garageCategoryData.updateCategory(categoryId, editedCategory)
+      .then(() => {
+        this.getBoards();
+        this.setState({ formOpen: false, editCategory: {} });
+      })
+      .catch((err) => console.error('Update Board Borked', err));
+  }
+
+  closeForm = () => {
+    this.setState({ formOpen: false });
+  }
+
   render() {
     const { garageCategories, formOpen } = this.state;
     const { setSingleGarageCategory } = this.props;
 
-    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id}/>);
+    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} />);
     return (
       <div>
         <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="fas fa-plus"></i></button>

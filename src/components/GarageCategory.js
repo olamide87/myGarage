@@ -15,6 +15,12 @@ class GarageCategory extends React.Component {
     setSingleGarageCategory(garageCategory.id);
   }
 
+  editCategoryEvent = (e) => {
+    e.preventDefault();
+    const { editACategory } = this.props;
+    editACategory();
+  }
+
   render() {
     const { garageCategory } = this.props;
 
@@ -24,7 +30,10 @@ class GarageCategory extends React.Component {
           <h5 className="card-title">{garageCategory.categoryName}</h5>
           <img className="card-img" src={garageCategory.imageUrl} alt={garageCategory.categoryName}/>
           <div className='btn-group' role='group'>
-            <button className="btn btn-success" onClick={this.singleBoardEvent}>View Garage Category details</button>
+            <div className="btn-group" role="group">
+            <button className="btn btn-success" onClick={this.singleGarageCategoryEvent}><i class="far fa-eye"></i></button>
+            <button className="btn btn-warning" onClick={this.editCategoryEvent}><i class="fas fa-edit"></i></button>
+            </div>
           </div>
         </div>
       </div>
