@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import authData from '../helpers/data/authData';
 import GarageCategory from './GarageCategory';
 import garageCategoryData from '../helpers/data/garageCategoryData';
+import GarageCategoryForm from './GarageCategoryForm';
 
 class GarageContainer extends React.Component {
   static propTypes = {
@@ -11,6 +12,7 @@ class GarageContainer extends React.Component {
 
   state ={
     garageCategories: [],
+    formOpen: false,
   }
 
   getGarageCategories = () => {
@@ -23,13 +25,24 @@ class GarageContainer extends React.Component {
     this.getGarageCategories();
   }
 
+  createCategory = (newCategory) => {
+    garageCategoryData.createCategory(newCategory)
+      .then((res) => {
+        this.getGarageCategories();
+        this.setState({ formOpen: false });
+      })
+      .catch((err) => console.error('Create Category Broke', err));
+  }
+
   render() {
-    const { garageCategories } = this.state;
+    const { garageCategories, formOpen } = this.state;
     const { setSingleGarageCategory } = this.props;
 
     const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id}/>);
     return (
       <div>
+        <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="fas fa-plus"></i></button>
+        { formOpen ? <GarageCategoryForm createCategory={this.createCategory} /> : '' }
           <div className="card-columns">
            {garageCategoryCard}
           </div>
