@@ -25,6 +25,15 @@ class GarageContainer extends React.Component {
     this.getGarageCategories();
   }
 
+  createCategory = (newCategory) => {
+    garageCategoryData.createCategory(newCategory)
+      .then((res) => {
+        this.getGarageCategories();
+        this.setState({ formOpen: false });
+      })
+      .catch((err) => console.error('Create Category Broke', err));
+  }
+
   render() {
     const { garageCategories, formOpen } = this.state;
     const { setSingleGarageCategory } = this.props;
@@ -33,7 +42,7 @@ class GarageContainer extends React.Component {
     return (
       <div>
         <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="fas fa-plus"></i></button>
-        { formOpen ? <GarageCategoryForm /> : '' }
+        { formOpen ? <GarageCategoryForm createCategory={this.createCategory} /> : '' }
           <div className="card-columns">
            {garageCategoryCard}
           </div>

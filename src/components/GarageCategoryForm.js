@@ -10,12 +10,7 @@ class GarageCategoryForm extends React.Component {
 
   state = {
     categoryName: '',
-    imgUrl: '',
-  }
-
-  changeNameEvent = (e) => {
-    e.preventDefault();
-    this.setState({ categoryName: e.target.value });
+    imageUrl: '',
   }
 
   changeCategoryNameEvent = (e) => {
@@ -25,22 +20,21 @@ class GarageCategoryForm extends React.Component {
 
   changeImgUrlEvent = (e) => {
     e.preventDefault();
-    this.setState({ imgUrl: e.target.value });
+    this.setState({ imageUrl: e.target.value });
   }
 
   saveCategoryEvent = (e) => {
     e.preventDefault();
-    const { categoryName, imgUrl } = this.setState;
+    const { categoryName, imageUrl } = this.state;
     const { createCategory } = this.props;
 
     const newCategory = {
       categoryName,
-      imgUrl,
+      imageUrl,
       uid: authData.getUid(),
     };
-
-    console.warn('hey here is a new category!!!', newCategory);
     createCategory(newCategory);
+    console.warn('hey here is a new category!!!', newCategory);
   }
 
     closeFormEvent = (e) => {
@@ -51,7 +45,7 @@ class GarageCategoryForm extends React.Component {
     render() {
       const {
         categoryName,
-        imgUrl,
+        imageUrl,
       } = this.state;
 
       return (
@@ -65,17 +59,17 @@ class GarageCategoryForm extends React.Component {
               id="categoryName"
               placeholder="Enter Category Name"
               value={categoryName}
-              onChange={this.changeNameEvent}
+              onChange={this.changeCategoryNameEvent}
             />
         </div>
         <div className="form-group">
-          <label htmlFor="imgUrl">Img Url</label>
+          <label htmlFor="imageUrl">Img Url</label>
           <input
             type="text"
             className="form-control"
-            id="imgUrl"
+            id="imageUrl"
             placeholder="picture"
-            value={imgUrl}
+            value={imageUrl}
             onChange={this.changeImgUrlEvent}
           />
           </div>
