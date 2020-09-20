@@ -1,20 +1,24 @@
 import React from 'react';
 import firebase from 'firebase/app';
+
 import 'firebase/auth';
 
 import fbConnection from '../helpers/data/connection';
 
 import MyNavbar from '../components/MyNavbar';
 import Auth from '../components/Auth';
-import BoardContainer from '../components/BoardContainer';
+
+import GarageContainer from '../components/GarageContainer';
 
 import './App.scss';
+import SingleCategory from '../components/SingleGarageCategory';
 
 fbConnection();
 
 class App extends React.Component {
   state = {
     authed: false,
+    singleGarageCategoryId: '',
   }
 
   componentDidMount() {
@@ -31,12 +35,16 @@ class App extends React.Component {
     this.removeListener();
   }
 
+  setSingleGarageCategory = (singleGarageCategoryId) => {
+    this.setState({ singleGarageCategoryId });
+  }
+
   render() {
-    const { authed } = this.state;
+    const { authed, singleGarageCategoryId } = this.state;
 
     const loadComponent = () => {
-      if (authed) {
-        return <BoardContainer />;
+      if (authed && singleGarageCategoryId.length === 0) {
+        return <GarageContainer setSingleGarageCategory={this.setSingleGarageCategory} />;
       }
 
       return '';
