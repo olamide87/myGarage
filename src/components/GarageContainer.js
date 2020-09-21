@@ -38,6 +38,7 @@ class GarageContainer extends React.Component {
   }
 
   editACategory = (categoryToEdit) => {
+    console.warn(categoryToEdit);
     this.setState({ formOpen: true, editCategory: categoryToEdit });
   }
 

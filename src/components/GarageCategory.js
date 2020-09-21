@@ -17,8 +17,8 @@ class GarageCategory extends React.Component {
 
   editCategoryEvent = (e) => {
     e.preventDefault();
-    const { editACategory } = this.props;
-    editACategory();
+    const { editACategory, garageCategory } = this.props;
+    editACategory(garageCategory);
   }
 
   render() {

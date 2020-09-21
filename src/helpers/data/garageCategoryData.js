@@ -20,9 +20,12 @@ const getSingleCategory = (categoryId) => axios.get(`${baseUrl}/garageCategories
 
 const createCategory = (newCategory) => axios.post(`${baseUrl}/garageCategories.json`, newCategory);
 
+const updateCategory = (categoryId, editCategory) => axios.put(`${baseUrl}/garageCategories/${categoryId}.json`, editCategory);
+
 export default {
   getSingleCategory,
   getGarageCategoryByCategoryId,
   getGarageCategoryByUid,
   createCategory,
+  updateCategory,
 };

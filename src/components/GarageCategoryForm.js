@@ -6,6 +6,7 @@ class GarageCategoryForm extends React.Component {
   static propTypes = {
     createCategory: PropTypes.func.isRequired,
     closeForm: PropTypes.func.isRequired,
+    updateCategory: PropTypes.func.isRequired,
   }
 
   state = {
