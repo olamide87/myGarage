@@ -7,11 +7,25 @@ class GarageCategoryForm extends React.Component {
     createCategory: PropTypes.func.isRequired,
     closeForm: PropTypes.func.isRequired,
     updateCategory: PropTypes.func.isRequired,
+    garageCategory: PropTypes.object.isRequired,
+    categoryThatIAmEditing: PropTypes.object.isRequired,
   }
 
   state = {
     categoryName: '',
     imageUrl: '',
+    isEditing: false,
+  }
+
+  componentDidMount() {
+    const { categoryThatIAmEditing } = this.props;
+    if (categoryThatIAmEditing.categoryName) {
+      this.setState({
+        categoryName: categoryThatIAmEditing.categoryName,
+        imageUrl: categoryThatIAmEditing.imageUrl,
+        isEditing: true,
+      });
+    }
   }
 
   changeCategoryNameEvent = (e) => {
@@ -47,6 +61,7 @@ class GarageCategoryForm extends React.Component {
       const {
         categoryName,
         imageUrl,
+        isEditing,
       } = this.state;
 
       return (
@@ -74,6 +89,11 @@ class GarageCategoryForm extends React.Component {
             onChange={this.changeImgUrlEvent}
           />
           </div>
+          {
+            isEditing
+              ? <button className="btn btn-light">Edit Category</button>
+              : <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
+          }
           <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
          </form>
       );

@@ -42,8 +42,8 @@ class GarageContainer extends React.Component {
     this.setState({ formOpen: true, editCategory: categoryToEdit });
   }
 
-  updateCategory = (categoryId, editedCategory) => {
-    garageCategoryData.updateCategory(categoryId, editedCategory)
+  updateCategory = (categoryId, editCategory) => {
+    garageCategoryData.updateCategory(categoryId, editCategory)
       .then(() => {
         this.getBoards();
         this.setState({ formOpen: false, editCategory: {} });
@@ -56,14 +56,14 @@ class GarageContainer extends React.Component {
   }
 
   render() {
-    const { garageCategories, formOpen } = this.state;
+    const { garageCategories, formOpen, editCategory } = this.state;
     const { setSingleGarageCategory } = this.props;
 
     const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} />);
     return (
       <div>
         <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="fas fa-plus"></i></button>
-        { formOpen ? <GarageCategoryForm createCategory={this.createCategory} /> : '' }
+        { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} /> : '' }
           <div className="card-columns">
            {garageCategoryCard}
           </div>
