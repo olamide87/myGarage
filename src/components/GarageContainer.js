@@ -38,17 +38,16 @@ class GarageContainer extends React.Component {
   }
 
   editACategory = (categoryToEdit) => {
-    console.warn(categoryToEdit);
     this.setState({ formOpen: true, editCategory: categoryToEdit });
   }
 
-  updateCategory = (categoryId, editCategory) => {
-    garageCategoryData.updateCategory(categoryId, editCategory)
+  updateCategory = (categoryId, editedCategory) => {
+    garageCategoryData.updateCategory(categoryId, editedCategory)
       .then(() => {
         this.getBoards();
         this.setState({ formOpen: false, editCategory: {} });
       })
-      .catch((err) => console.error('Update Board Borked', err));
+      .catch((err) => console.error('Update Category Borked', err));
   }
 
   closeForm = () => {
@@ -59,12 +58,15 @@ class GarageContainer extends React.Component {
     const { garageCategories, formOpen, editCategory } = this.state;
     const { setSingleGarageCategory } = this.props;
 
-    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} />);
+    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} updateCategory={this.updateCategory} />);
+
     return (
       <div>
-        <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: !formOpen }); }}><i className="fas fa-plus"></i></button>
-        { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} /> : '' }
-          <div className="card-columns">
+        <div className="mb-3">
+          {!formOpen ? <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: true, editCategory: {} }); }}><i className="fas fa-plus"></i></button> : '' }
+          { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} /> : '' }
+        </div>
+        <div className="card-columns">
            {garageCategoryCard}
           </div>
       </div>

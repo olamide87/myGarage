@@ -52,6 +52,19 @@ class GarageCategoryForm extends React.Component {
     console.warn('hey here is a new category!!!', newCategory);
   }
 
+    editCategoryEvent = (e) => {
+      e.preventDefault();
+      const { categoryName, imageUrl } = this.state;
+      const { updateCategory, categoryThatIAmEditing } = this.props;
+
+      const myCategoryWithChanges = {
+        categoryName,
+        imageUrl,
+        uid: authData.getUid(),
+      };
+      updateCategory(categoryThatIAmEditing.id, myCategoryWithChanges);
+    };
+
     closeFormEvent = (e) => {
       e.preventDefault();
       this.props.closeForm();
@@ -89,12 +102,13 @@ class GarageCategoryForm extends React.Component {
             onChange={this.changeImgUrlEvent}
           />
           </div>
-          {
+           <button className="btn btn-light" onClick={this.editCategoryEvent}>Edit Category</button>
+               <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
+          {/* {
             isEditing
-              ? <button className="btn btn-light">Edit Category</button>
+              ? <button className="btn btn-light" onClick={this.editCategoryEvent}>Edit Category</button>
               : <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
-          }
-          <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
+          } */}
          </form>
       );
     }
