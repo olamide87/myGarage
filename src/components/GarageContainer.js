@@ -37,6 +37,14 @@ class GarageContainer extends React.Component {
       .catch((err) => console.error('Create Category Broke', err));
   }
 
+  deleteCategory = (categoryId) => {
+    garageCategoryData.deleteCategory(categoryId)
+      .then(() => {
+        this.getGarageCategories();
+      })
+      .catch((err) => console.error(err));
+  }
+
   editACategory = (categoryToEdit) => {
     this.setState({ formOpen: true, editCategory: categoryToEdit });
   }
@@ -58,7 +66,7 @@ class GarageContainer extends React.Component {
     const { garageCategories, formOpen, editCategory } = this.state;
     const { setSingleGarageCategory } = this.props;
 
-    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} updateCategory={this.updateCategory} />);
+    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} updateCategory={this.updateCategory} deleteCategory={this.deleteCategory} />);
 
     return (
       <div>

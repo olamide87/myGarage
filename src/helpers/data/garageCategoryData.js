@@ -22,10 +22,13 @@ const createCategory = (newCategory) => axios.post(`${baseUrl}/garageCategories.
 
 const updateCategory = (categoryId, editedCategory) => axios.put(`${baseUrl}/garageCategories/${categoryId}.json`, editedCategory);
 
+const deleteCategory = (categoryId) => axios.delete(`${baseUrl}/garageCategories/${categoryId}.json`);
+
 export default {
   getSingleCategory,
   getGarageCategoryByCategoryId,
   getGarageCategoryByUid,
   createCategory,
   updateCategory,
+  deleteCategory,
 };
