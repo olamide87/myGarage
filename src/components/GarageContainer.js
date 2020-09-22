@@ -66,13 +66,13 @@ class GarageContainer extends React.Component {
     const { garageCategories, formOpen, editCategory } = this.state;
     const { setSingleGarageCategory } = this.props;
 
-    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} updateCategory={this.updateCategory} deleteCategory={this.deleteCategory} />);
+    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} updateCategory={this.updateCategory} deleteCategory={this.deleteCategory} closeForm={this.closeForm} />);
 
     return (
       <div>
         <div className="mb-3">
           {!formOpen ? <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: true, editCategory: {} }); }}><i className="fas fa-plus"></i></button> : '' }
-          { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} /> : '' }
+          { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} formOpen={formOpen} closeForm={this.closeForm} /> : '' }
         </div>
         <div className="card-columns">
            {garageCategoryCard}
