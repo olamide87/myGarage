@@ -5,6 +5,8 @@ import GarageCategory from './GarageCategory';
 import garageCategoryData from '../helpers/data/garageCategoryData';
 import GarageCategoryForm from './GarageCategoryForm';
 
+import './GarageContainer.scss';
+
 class GarageContainer extends React.Component {
   static propTypes = {
     setSingleGarageCategory: PropTypes.func.isRequired,
@@ -74,7 +76,7 @@ class GarageContainer extends React.Component {
           {!formOpen ? <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: true, editCategory: {} }); }}><i className="fas fa-plus"></i></button> : '' }
           { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} formOpen={formOpen} closeForm={this.closeForm} /> : '' }
         </div>
-        <div className="card-columns">
+        <div className="container">
            {garageCategoryCard}
           </div>
       </div>
