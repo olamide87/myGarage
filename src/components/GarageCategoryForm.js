@@ -28,6 +28,19 @@ class GarageCategoryForm extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const prevCategory = prevProps.categoryThatIAmEditing;
+    const incomingCategory = this.props.categoryThatIAmEditing;
+    if (prevCategory.categoryName !== incomingCategory.categoryName) {
+      this.setState({
+        imageUrl: incomingCategory.imageUrl || '',
+        categoryName: incomingCategory.categoryName || '',
+        // eslint-disable-next-line no-unneeded-ternary
+        isEditing: incomingCategory.name ? true : false,
+      });
+    }
+  }
+
   changeCategoryNameEvent = (e) => {
     e.preventDefault();
     this.setState({ categoryName: e.target.value });
