@@ -54,7 +54,7 @@ class GarageContainer extends React.Component {
   updateCategory = (categoryId, editedCategory) => {
     garageCategoryData.updateCategory(categoryId, editedCategory)
       .then(() => {
-        this.getBoards();
+        this.getGarageCategories();
         this.setState({ formOpen: false, editCategory: {} });
       })
       .catch((err) => console.error('Update Category Borked', err));
@@ -68,13 +68,13 @@ class GarageContainer extends React.Component {
     const { garageCategories, formOpen, editCategory } = this.state;
     const { setSingleGarageCategory } = this.props;
 
-    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} updateCategory={this.updateCategory} deleteCategory={this.deleteCategory} closeForm={this.closeForm} />);
+    const garageCategoryCard = garageCategories.map((garageCategory) => <GarageCategory garageCategory={garageCategory} setSingleGarageCategory={setSingleGarageCategory} key={GarageCategory.id} editACategory={this.editACategory} deleteCategory={this.deleteCategory} closeForm={this.closeForm} />);
 
     return (
       <div>
         <div className="mb-3">
           {!formOpen ? <button className="btn btn-warning" onClick={() => { this.setState({ formOpen: true, editCategory: {} }); }}><i className="fas fa-plus"></i></button> : '' }
-          { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} formOpen={formOpen} closeForm={this.closeForm} /> : '' }
+          { formOpen ? <GarageCategoryForm createCategory={this.createCategory}categoryThatIAmEditing={editCategory} updateCategory={this.updateCategory} formOpen={formOpen} closeForm={this.closeForm} /> : '' }
         </div>
         <div className="container">
            {garageCategoryCard}

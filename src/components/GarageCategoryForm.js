@@ -76,6 +76,7 @@ class GarageCategoryForm extends React.Component {
         uid: authData.getUid(),
       };
       updateCategory(categoryThatIAmEditing.id, myCategoryWithChanges);
+      console.warn('hey here is a new category!!!', myCategoryWithChanges);
     };
 
     closeFormEvent = (e) => {
@@ -115,13 +116,11 @@ class GarageCategoryForm extends React.Component {
             onChange={this.changeImgUrlEvent}
           />
           </div>
-           <button className="btn btn-light" onClick={this.editCategoryEvent}>Edit Category</button>
-               <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
-          {/* {
+          {
             isEditing
               ? <button className="btn btn-light" onClick={this.editCategoryEvent}>Edit Category</button>
               : <button className= "btn btn-dark" onClick={this.saveCategoryEvent}>Save Category</button>
-          } */}
+          }
          </form>
       );
     }
