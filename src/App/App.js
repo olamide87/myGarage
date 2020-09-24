@@ -11,7 +11,7 @@ import Auth from '../components/Auth';
 import GarageContainer from '../components/GarageContainer';
 
 import './App.scss';
-import SingleCategory from '../components/SingleGarageCategory';
+import SingleGarageCategory from '../components/SingleGarageCategory';
 
 fbConnection();
 
@@ -47,12 +47,17 @@ class App extends React.Component {
         return <GarageContainer setSingleGarageCategory={this.setSingleGarageCategory} />;
       }
 
+      if (authed && singleGarageCategoryId.length > 0) {
+        return <SingleGarageCategory categoryId={singleGarageCategoryId} setSingleGarageCategory={this.setSingleGarageCategory}/>;
+      }
+
       return '';
     };
 
     return (
       <div className="App">
         <MyNavbar authed={authed} />
+        <h1><sup>MY</sup> | <sub>Garage</sub></h1>
         {loadComponent()}
       </div>
     );
