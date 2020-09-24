@@ -46,9 +46,9 @@ class GarageCategory extends React.Component {
           <img className="card-img" src={garageCategory.imageUrl} alt={garageCategory.categoryName}/>
           <div className='btn-group' role='group'>
             <div className="btn-group" role="group">
-            <button className="btn btn-success" onClick={this.singleGarageCategoryEvent}><i class="far fa-eye"></i></button>
-            <button className="btn btn-warning" onClick={this.editCategoryEvent}><i class="fas fa-edit"></i></button>
-            <button className="btn btn-danger" onClick={this.deleteCategoryEvent} ><i class="fas fa-trash-alt"></i></button>
+            <button className="btn btn-success" onClick={this.singleGarageCategoryEvent}><i className="far fa-eye"></i></button>
+            <button className="btn btn-warning" onClick={this.editCategoryEvent}><i className="fas fa-edit"></i></button>
+            <button className="btn btn-danger" onClick={this.deleteCategoryEvent} ><i className="fas fa-trash-alt"></i></button>
             </div>
           </div>
         </div>
