@@ -16,7 +16,7 @@ class GarageItem extends React.Component {
       <div className="card-body">
         <h5 className="card-title">{garageItem.garageItemName}</h5>
         <img className="card-img" src={garageItem.imageUrl} alt={garageItem.garageItemName}/>
-        <p className="card-checkoutDate">{garageItem.checkoutDate}</p>
+        <p className="card-checkoutDate">CHECKOUT DATE: {garageItem.checkoutDate}</p>
         <p className="card-isCheckedOut">{garageItem.isCheckedOut}</p>
         <div className='btn-group' role='group'>
           <div className="btn-group" role="group">
