@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import GarageItemForm from './garageItemForm';
+
 import garageItemData from '../helpers/data/garageItemData';
 
 import garageCategoryData from '../helpers/data/garageCategoryData';
@@ -15,6 +17,7 @@ class SingleCategory extends React.Component {
   state = {
     garageCategory: {},
     garageItems: [],
+    showForm: false,
   }
 
   getYoGarageItems = () => {
@@ -34,6 +37,15 @@ class SingleCategory extends React.Component {
 
     this.getYoGarageItems();
     console.error(this.state.garageItems);
+  }
+
+  createItem = (newItem) => {
+    garageItemData.createItem(newItem)
+      .then(() => {
+        this.getYoGarageItems();
+        this.setState({ showForm: false });
+      })
+      .catch((err) => console.error(err));
   }
 
   goHome = (e) => {
@@ -61,14 +73,18 @@ class SingleCategory extends React.Component {
   }
 
   render() {
-    const { garageCategory, garageItems } = this.state;
-    const { setSingleGarageCategory } = this.props;
+    const { garageCategory, garageItems, showForm } = this.state;
+    const { setSingleGarageCategory, categoryId } = this.props;
 
     const garageItemCards = garageItems.map((garageItem) => <GarageItem key={garageItem.id} garageItem={garageItem} isChecked={this.isChecked} />);
 
     return (
       <div >
         <h4>{garageCategory.categoryName}</h4>
+        <div className="mb-3">
+          <button className="btn btn-warning" onClick={() => { this.setState({ showForm: !showForm }); }}><i className={showForm ? 'far fa-times-circle' : 'far fa-plus-square'}></i></button>
+          {showForm ? <GarageItemForm categoryId={categoryId} createItem={this.createItem} /> : ''}
+        </div>
         <div className="card-columns">
           {garageItemCards}
         </div>
