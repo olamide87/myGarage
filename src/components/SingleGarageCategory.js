@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import garageItemData from '../helpers/data/garageItemData';
 
 import garageCategoryData from '../helpers/data/garageCategoryData';
-import GarageItem from './GarageItem';
+import GarageItem from './garageItem';
 
 class SingleCategory extends React.Component {
   static propTypes = {
@@ -36,11 +36,35 @@ class SingleCategory extends React.Component {
     console.error(this.state.garageItems);
   }
 
+  goHome = (e) => {
+    const categoryId = '';
+    this.props.setSingleGarageCategory(categoryId);
+  }
+
+  isChecked = (e) => {
+    e.preventDefault();
+    if (e.target.checked) {
+      const updatedItem = { isCheckedOut: true };
+      garageItemData.updateItem(e.target.id, updatedItem)
+        .then(() => {
+          this.getYoGarageItems();
+        })
+        .catch((err) => console.error(err));
+    } else {
+      const updatedItem = { isCheckedOut: false };
+      garageItemData.updateItem(e.target.id, updatedItem)
+        .then(() => {
+          this.getYoGarageItems();
+        })
+        .catch((err) => console.error(err));
+    }
+  }
+
   render() {
     const { garageCategory, garageItems } = this.state;
-    const { setSingleCategory } = this.props;
+    const { setSingleGarageCategory } = this.props;
 
-    const garageItemCards = garageItems.map((garageItem) => <GarageItem key={garageItem.id} garageItem={garageItem}/>);
+    const garageItemCards = garageItems.map((garageItem) => <GarageItem key={garageItem.id} garageItem={garageItem} isChecked={this.isChecked} />);
 
     return (
       <div >
@@ -48,7 +72,7 @@ class SingleCategory extends React.Component {
         <div className="card-columns">
           {garageItemCards}
         </div>
-        <button className="btn btn-danger" onClick={this.backButton}>Go Back</button>
+        <button className="btn btn-danger" onClick={this.goHome}>Go Back</button>
         <div className='card-container'>
         </div>
       </div>
