@@ -9,15 +9,22 @@ class GarageItem extends React.Component {
   }
 
   render() {
-    const { garageItem } = this.props;
-
+    const { garageItem, isChecked } = this.props;
     return (
       <div className="card" >
-      <div className="card-body">
+      <div className="card-body itemCard">
         <h5 className="card-title">{garageItem.garageItemName}</h5>
         <img className="card-img" src={garageItem.imageUrl} alt={garageItem.garageItemName}/>
         <p className="card-checkoutDate">CHECKOUT DATE: {garageItem.checkoutDate}</p>
-        <p className="card-isCheckedOut">{garageItem.isCheckedOut}</p>
+        <p className="card-isCheckedOut">{garageItem.isCheckedOut && <i className="noSymbol fas fa-ban"></i>}</p>
+        {
+          garageItem.isCheckedOut
+            && <input id={garageItem.id} onChange={isChecked} type="checkbox" aria-label="Checkbox for following text input" checked />
+        }
+        {
+          !garageItem.isCheckedOut
+            && <input id={garageItem.id} onChange={isChecked} type="checkbox" aria-label="Checkbox for following text input" />
+        }
         <div className='btn-group' role='group'>
           <div className="btn-group" role="group">
           </div>
