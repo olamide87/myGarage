@@ -18,6 +18,8 @@ const getGarageItemByUid = (uid) => new Promise((resolve, reject) => {
 
 const createItem = (newItem) => axios.post(`${baseUrl}/garageItems.json`, newItem);
 
+const deleteItem = (ItemId) => axios.delete(`${baseUrl}/garageItems/${ItemId}.json`);
+
 const updateItem = (itemId, editedItem) => axios.patch(`${baseUrl}/garageItems/${itemId}.json`, editedItem);
 
 export default {
@@ -25,4 +27,5 @@ export default {
   getGarageItemByUid,
   createItem,
   updateItem,
+  deleteItem,
 };

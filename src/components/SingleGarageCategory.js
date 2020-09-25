@@ -72,11 +72,19 @@ class SingleCategory extends React.Component {
     }
   }
 
+  deleteItem = (itemId) => {
+    garageItemData.deleteItem(itemId)
+      .then(() => {
+        this.getYoGarageItems();
+      })
+      .catch((err) => console.error('delete item failed', err));
+  }
+
   render() {
     const { garageCategory, garageItems, showForm } = this.state;
     const { setSingleGarageCategory, categoryId } = this.props;
 
-    const garageItemCards = garageItems.map((garageItem) => <GarageItem key={garageItem.id} garageItem={garageItem} isChecked={this.isChecked} />);
+    const garageItemCards = garageItems.map((garageItem) => <GarageItem key={garageItem.id} garageItem={garageItem} isChecked={this.isChecked} deleteItem={this.deleteItem} />);
 
     return (
       <div >

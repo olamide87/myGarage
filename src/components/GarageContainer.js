@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import authData from '../helpers/data/authData';
 import GarageCategory from './GarageCategory';
+
 import garageCategoryData from '../helpers/data/garageCategoryData';
 import GarageCategoryForm from './GarageCategoryForm';
+
+import smashData from '../helpers/data/smashData';
 
 import './GarageContainer.scss';
 
@@ -28,6 +32,12 @@ class GarageContainer extends React.Component {
 
   componentDidMount() {
     this.getGarageCategories();
+  }
+
+  deleteCategory = (categoryId) => {
+    smashData.totallyRemoveCategory(categoryId)
+      .then(() => this.getGarageCategories())
+      .catch((err) => console.error(err));
   }
 
   createCategory = (newCategory) => {
